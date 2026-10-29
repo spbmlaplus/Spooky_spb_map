@@ -955,6 +955,35 @@
           59.932802
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "id": 46,
+      "properties": {
+        "fid": 46,
+        "name": "Особняк княгини Кугушевой",
+        "address": "Каменный остров, Боковая аллея, 1",
+        "year": "конец XIX века",
+        "description": "Сказочный особняк княгини М. К. Кугушевой построен по проекту архитектора К. Г. Прейса. Нижний этаж каменный, верхний — деревянный; над домом поднимается башня с высоким шатром и шпилем. Резные детали и сложная крыша делают его похожим на терем. В здании работает детская художественная школа имени Б. М. Кустодиева. Это другой дом, чем особняк Мельцера, известный как «Дом Бабы-яги».",
+        "category": "Сказочная архитектура",
+        "districts": [
+          72
+        ],
+        "photo": "46-card.webp",
+        "thumb": "46-thumb.webp",
+        "sources": [
+          "https://mostotrest-spb.krti.gov.spb.ru/football/route/istoricheskie-dachi",
+          "https://p118.spb.ru/progulka-vokrug-stancii-metro-chernaya-rechka/",
+          "https://commons.wikimedia.org/wiki/Category:Kugusheva_Mansion"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.2854694,
+          59.9782694
+        ]
+      }
     }
   ]
 }
