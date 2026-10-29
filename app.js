@@ -411,7 +411,7 @@
     var pinsChip = document.createElement("button");
     pinsChip.type = "button"; pinsChip.className = "ch pins" + (pinsOn ? "" : " off");
     var th = (D.location.features.filter(function (f) { return f.properties.thumb; })[0] || { properties: {} }).properties.thumb;
-    pinsChip.innerHTML = '<img src="' + esc(th || "") + '" alt=""><span>Жуткие локации</span><b>' + D.location.features.length + "</b>";
+    pinsChip.innerHTML = '<img src="' + esc(th || "") + '" alt=""><span>Локации как в фильме Тима Бёртона</span><b>' + D.location.features.length + "</b>";
     pinsChip.addEventListener("click", function () { togglePins(!pinsOn); });
     box.appendChild(pinsChip);
     var allChip = document.createElement("button");
