@@ -319,29 +319,22 @@
     $("crowd-open").textContent = C.cta; $("crowd-open").hidden = false;
     $("crowd-form").hidden = true; $("crowd-msg").hidden = true;
   }
-  $("crowd-story").placeholder = C.placeholder || "";
-  $("crowd-name").placeholder = C.name_placeholder || "";
-  $("crowd-agree-text").textContent = C.agree || "";
-  $("crowd-send").textContent = C.send || "Отправить";
+  // Истории отправляются через публичную Яндекс или Google Форму.
   $("crowd-open").addEventListener("click", function () {
-    this.hidden = true; $("crowd-form").hidden = false; $("crowd-msg").hidden = true; $("crowd-story").focus();
+    this.hidden = true; $("crowd-form").hidden = false; $("crowd-msg").hidden = true;
+    var url = C.public_form_url || "", valid = false;
+    try { var u = new URL(url); valid = u.protocol === "https:" && (/^(forms\.yandex\.(ru|com)|forms\.ya\.ru|forms\.gle)$/.test(u.hostname) || (u.hostname === "docs.google.com" && u.pathname.indexOf("/forms/") === 0)); } catch(e) {}
+    $("crowd-district-name").textContent = crowdFor ? [crowdFor.name_2, crowdFor.name].filter(Boolean).join(" / ") : "";
+    $("crowd-form-link").hidden = !valid;
+    $("crowd-copy-district").hidden = !valid;
+    $("crowd-form-note").textContent = valid ? "Откроется форма для истории. Скопируй название района и укажи его в ответе." : "Форма для историй этого района ещё не подключена. Приём историй скоро откроется.";
+    if(valid) $("crowd-form-link").href = url;
   });
   $("crowd-cancel").addEventListener("click", function () { $("crowd-form").hidden = true; $("crowd-open").hidden = false; });
-  $("crowd-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    var msg = $("crowd-msg"), p = crowdFor; if (!p) return;
-    var show = function (t) { msg.textContent = t; msg.hidden = false; };
-    if (!C.form_url) { show(C.not_connected); return; }
-    var fd = new FormData();
-    fd.append(C.fields.district_id, p._id);
-    fd.append(C.fields.district, (p.name_2 || "") + " / " + (p.name || ""));
-    fd.append(C.fields.story, $("crowd-story").value.trim());
-    fd.append(C.fields.author, $("crowd-name").value.trim());
-    $("crowd-send").disabled = true;
-    fetch(C.form_url, { method: "POST", mode: "no-cors", body: fd }).then(function () {
-      $("crowd-form").reset(); $("crowd-form").hidden = true; show(C.thanks);
-      say("Ооо, свежая страшилка! Покажу её всем, как только модератор одобрит.", { secs: 5 });
-    }).catch(function () { show(C.error); }).then(function () { $("crowd-send").disabled = false; });
+  $("crowd-copy-district").addEventListener("click", function () {
+    var text = $("crowd-district-name").textContent;
+    if(navigator.clipboard) navigator.clipboard.writeText(text).then(function(){ $("crowd-form-note").textContent="Название района скопировано. Вставь его в форме вместе с историей."; }).catch(function(){ $("crowd-form-note").textContent="Скопируй название района из строки ниже."; });
+    else $("crowd-form-note").textContent="Скопируй название района из строки ниже.";
   });
 
   // ------------------------------------------------------------------ фото-точки
@@ -673,16 +666,6 @@
     });
   }
   $("btn-legend").addEventListener("click", function () { buildStats(); openModal("legend"); });
-
-  // Почта призрака: только публичная форма, без паролей и токенов.
-  $("btn-ghost-mail").addEventListener("click", function () {
-    var url = (S.ghost_mail || {}).form_url || "", valid = false;
-    try { var parsed = new URL(url); valid = parsed.protocol === "https:" && /^(forms\.yandex\.(ru|com)|forms\.ya\.ru)$/.test(parsed.hostname); } catch(e) {}
-    $("ghost-mail-link").hidden = !valid;
-    $("ghost-mail-state").textContent = valid ? "Откроется Яндекс Форма. Напиши послание и нажми «Отправить» в самой форме." : "Мой почтовый ящик ещё готовится. Скоро здесь можно будет оставить послание.";
-    if(valid) $("ghost-mail-link").href = url;
-    openModal("ghost-mail");
-  });
 
   // ------------------------------------------------------------------ ползунок с привидением
   var track = $("fear-track"), ghost = $("ghost"), fill = $("fear-fill"), bubble = $("bubble"), fear = $("fear");

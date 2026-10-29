@@ -60,4 +60,5 @@
 @media(max-width:720px){.fear{top:12px}}
 
 
-.ghost-mail{--w:480px}.ghost-mail h2{font:26px var(--font-title);font-weight:400;margin:0 42px 22px 0}.ghost-mail p{line-height:1.6}.ghost-mail .cta{display:inline-block;text-decoration:none}.mail-note{color:var(--muted);font-size:12px}.tools{width:auto}.ghost-mail [hidden]{display:none!important}
+
+.crowd-form .cta{text-decoration:none;display:inline-block;align-self:flex-start}.crowd-district{font-size:13px;line-height:1.5}.crowd-form small{color:var(--muted);line-height:1.5}

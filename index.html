@@ -35,7 +35,6 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>
         <span class="tip">Найти район</span>
       </button>
-      <button class="tool" id="btn-ghost-mail" type="button" aria-label="Послание призраку"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg><span class="tip">Послание призраку</span></button>
       <div class="search" id="search" hidden>
         <input id="search-input" type="search" placeholder="Название района или легенды…" autocomplete="off">
         <ul id="search-list"></ul>
@@ -116,17 +115,14 @@
           <h3 id="crowd-title"></h3>
           <ul class="stories" id="stories"></ul>
           <button class="crowd-cta" id="crowd-open" type="button"></button>
-          <form class="crowd-form" id="crowd-form" hidden>
-            <label for="crowd-story" class="sr">Твоя история</label>
-            <textarea id="crowd-story" rows="5" maxlength="1500" required></textarea>
-            <label for="crowd-name" class="sr">Как подписать</label>
-            <input id="crowd-name" type="text" maxlength="60">
-            <label class="crowd-ok"><input id="crowd-agree" type="checkbox" required> <span id="crowd-agree-text"></span></label>
-            <div class="crowd-row">
-              <button type="submit" class="cta small" id="crowd-send"></button>
-              <button type="button" class="textlink" id="crowd-cancel">Отмена</button>
-            </div>
-          </form>
+          <div class="crowd-form" id="crowd-form" hidden>
+            <p id="crowd-form-note" role="status"></p>
+            <p class="crowd-district">Район: <strong id="crowd-district-name"></strong></p>
+            <button class="textlink" id="crowd-copy-district" type="button">Скопировать название района</button>
+            <a class="cta small" id="crowd-form-link" target="_blank" rel="noopener noreferrer" hidden>Рассказать историю ↗</a>
+            <small>Историю получит команда карты. На сайте она появится только после модерации.</small>
+            <button type="button" class="textlink" id="crowd-cancel">Закрыть</button>
+          </div>
           <p class="crowd-msg" id="crowd-msg" role="status" aria-live="polite" hidden></p>
         </section>
       </div>
@@ -151,25 +147,16 @@
     <div class="legend-list" id="legend-list"></div>
     <div id="stats"></div>
   </section>
-
-  <section class="modal ghost-mail" id="ghost-mail" role="dialog" aria-modal="true" aria-labelledby="ghost-mail-title" hidden>
-    <button class="x" data-close="ghost-mail" aria-label="Закрыть"></button>
-    <h2 id="ghost-mail-title">Почта призрака</h2>
-    <p>Бу! Хочешь рассказать свою страшилку, подсказать жуткое место или просто поздороваться? Я слушаю.</p>
-    <p id="ghost-mail-state" role="status"></p>
-    <a class="cta" id="ghost-mail-link" target="_blank" rel="noopener noreferrer" hidden>Написать призраку ↗</a>
-    <p class="mail-note">Послания получит команда карты. Они не появятся на сайте автоматически. Можно не указывать своё имя.</p>
-  </section>
   <script src="leaflet.js"></script>
   <script src="maplibre-gl.js"></script>
   <script src="leaflet-maplibre-gl.js"></script>
   <script src="basemap.js"></script>
-  <script src="settings.js?v=ghost-mail-1"></script>
+  <script src="settings.js?v=district-form-2"></script>
   <script src="bubbles.js"></script>
   <script src="location.js?v=photos-2"></script>
   <script src="heatmap.js"></script>
   <script src="servises.js"></script>
-  <script src="app.js?v=ghost-mail-1"></script>
+  <script src="app.js?v=district-form-2"></script>
 </body>
 </html>
 

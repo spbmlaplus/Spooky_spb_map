@@ -205,6 +205,8 @@ window.SETTINGS.heatmap = {
    ===================================================================== */
 window.SETTINGS.crowd = {
   enabled: true,
+  // Публичная ссылка Яндекс Формы или Google Формы (не ссылка редактора).
+  public_form_url: "",
   form_url: "",
   fields: { district_id: "entry.0000000001", district: "entry.0000000002", story: "entry.0000000003", author: "entry.0000000004" },
   stories_csv: "",
@@ -220,6 +222,4 @@ window.SETTINGS.crowd = {
   error: "Не получилось отправить. Попробуй ещё раз чуть позже."
 };
 
-/* Публичная ссылка из Яндекс Форм → Опубликовать → Ссылка на форму.
-   Ссылка на редактирование сюда не подходит. Пароли и токены не нужны. */
-window.SETTINGS.ghost_mail = { form_url: "" };
+
