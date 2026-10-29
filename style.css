@@ -552,3 +552,8 @@ body.panel-open .mapctl{right:calc(var(--panel-width) + 48px)}
  body > .tools #btn-search{display:none}
  body .hud,body.panel-open .hud{bottom:72px}
 }
+
+@media (max-width:720px){
+ body > .tools{bottom:calc(66px + env(safe-area-inset-bottom,0px))}
+ body .hud,body.panel-open .hud{bottom:0}
+}
