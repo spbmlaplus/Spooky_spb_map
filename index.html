@@ -7,7 +7,7 @@
   <meta name="description" content="Карта страшилок, поверий и легенд районов Петербурга от МЛА+">
   <link rel="stylesheet" href="leaflet.css">
   <link rel="stylesheet" href="maplibre-gl.css">
-  <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="refinements.css?v=district-form-4">
+  <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="refinements.css?v=district-form-5">
 </head>
 <body>
   <div id="map" aria-label="Карта"></div>
@@ -114,7 +114,14 @@
           <hr>
           <h3 id="crowd-title"></h3>
           <ul class="stories" id="stories"></ul>
-          <a class="crowd-cta" style="display:block;text-decoration:none;line-height:normal" id="crowd-open" href="https://docs.google.com/forms/d/e/1FAIpQLSeYU5zrTAdMcKLf78S-ZDdfvIjmfrm7arVvLoWTnmMMJUnTPw/viewform" target="_blank" rel="noopener noreferrer"></a>
+          <button class="crowd-cta" id="crowd-open" type="button" aria-expanded="false" aria-controls="crowd-embed"></button>
+          <div class="crowd-embed" id="crowd-embed" hidden>
+            <p class="story-note">Расскажи историю этого района. Можно анонимно — не указывай контакты и чужие персональные данные.</p>
+            <label class="story-consent"><input type="checkbox" id="story-consent"> <span>Я согласен(на) на обработку сведений, которые добровольно укажу в истории, командой МЛА+ для рассмотрения истории. Понимаю, что ответ передаётся через Google Формы.</span></label>
+            <button class="cta small" id="story-consent-go" type="button" disabled>Перейти к вопросу</button>
+            <div id="story-frame-wrap" hidden><p class="story-note">Форма для района: <strong id="story-district-name"></strong></p><iframe id="story-frame" title="Рассказать историю района" width="100%" height="580" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            <button class="textlink" id="story-close" type="button">Свернуть форму</button>
+          </div>
           <p class="crowd-msg" id="crowd-msg" role="status" aria-live="polite" hidden></p>
         </section>
       </div>
@@ -143,12 +150,12 @@
   <script src="maplibre-gl.js"></script>
   <script src="leaflet-maplibre-gl.js"></script>
   <script src="basemap.js"></script>
-  <script src="settings.js?v=district-form-3"></script>
+  <script src="settings.js?v=district-form-5"></script>
   <script src="bubbles.js"></script>
   <script src="location.js?v=photos-2"></script>
   <script src="heatmap.js"></script>
   <script src="servises.js"></script>
-  <script src="app.js?v=district-form-3"></script>
+  <script src="app.js?v=district-form-5"></script>
 </body>
 </html>
 

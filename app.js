@@ -317,8 +317,34 @@
       return "<li><p>" + esc(x.story) + "</p>" + (x.author ? "<small>— " + esc(x.author) + "</small>" : "") + "</li>";
     }).join("") : '<li class="none">' + esc(C.empty) + "</li>";
     $("crowd-open").textContent = C.cta; $("crowd-open").hidden = false;
-    $("crowd-open").href = C.public_form_url; $("crowd-msg").hidden = true;
+    resetStoryForm(); $("crowd-msg").hidden = true;
   }
+  // Load the external form only after the visitor gives consent.
+  function resetStoryForm() {
+    $("crowd-embed").hidden = true; $("crowd-open").setAttribute("aria-expanded", "false");
+    $("story-frame").removeAttribute("src"); $("story-frame-wrap").hidden = true;
+    $("story-consent").checked = false; $("story-consent-go").disabled = true;
+    $("story-consent-go").hidden = false;
+  }
+  $("crowd-open").addEventListener("click", function () {
+    var opening = $("crowd-embed").hidden;
+    if(!opening) { resetStoryForm(); return; }
+    $("crowd-embed").hidden = false; this.setAttribute("aria-expanded", "true");
+  });
+  $("story-consent").addEventListener("change", function () {
+    $("story-consent-go").disabled = !this.checked;
+    if(!this.checked) { $("story-frame").removeAttribute("src"); $("story-frame-wrap").hidden = true; $("story-consent-go").hidden = false; }
+  });
+  $("story-consent-go").addEventListener("click", function () {
+    if(!$("story-consent").checked) return;
+    var url;
+    try { url = new URL(C.public_form_url); if(url.protocol !== "https:" || url.hostname !== "docs.google.com" || url.pathname.indexOf("/forms/") !== 0) return; } catch(e) { return; }
+    url.searchParams.set("embedded", "true");
+    $("story-district-name").textContent = crowdFor ? (crowdFor.name_2 || crowdFor.name) : "";
+    $("story-frame").src = url.toString(); $("story-frame-wrap").hidden = false; this.hidden = true;
+  });
+  $("story-close").addEventListener("click", resetStoryForm);
+
   // ------------------------------------------------------------------ фото-точки
   var pins = {}, pinGroup = L.layerGroup().addTo(map), pinsOn = true;
   var pinSize = function () { return parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--pin-size")) || 50; };

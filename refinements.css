@@ -65,3 +65,7 @@
 
 /* Existing district story button is a link; preserve its appearance. */
 .crowd-cta{display:block;text-decoration:none;line-height:normal}
+
+/* Keep the original district story button and show the form inside its card. */
+button.crowd-cta{display:block;width:100%;text-decoration:none;line-height:normal;text-align:left;font:14px var(--font-text);padding:13px 14px;border-radius:14px}
+.crowd-embed{margin-top:14px;display:flex;flex-direction:column;gap:14px}.story-note{font-size:12px;line-height:1.5;color:var(--muted);margin:0}.story-consent{display:flex;align-items:flex-start;gap:9px;font-size:12px;line-height:1.5;color:#d5cedd}.story-consent input{flex-shrink:0;margin-top:3px;accent-color:var(--accent);width:16px;height:16px}.crowd-embed .cta{align-self:flex-start}.crowd-embed .cta:disabled{opacity:.4;cursor:not-allowed!important}.crowd-embed iframe{display:block;border:0;border-radius:12px;background:#fff;max-width:100%;margin-top:10px}.crowd-embed .textlink{align-self:flex-start}
