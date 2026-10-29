@@ -524,7 +524,7 @@ body.panel-open .mapctl{right:calc(var(--panel-width) + 48px)}
   body > .tools .tool-icon{width:21px;height:21px}
   body > .tools .tool::after{font:10px/1.1 var(--font-text);color:var(--ink);white-space:nowrap}
   body > .tools #btn-legend::after{content:'Что на карте'}
-  body > .tools #btn-heat::after{content:'Плотность'}
+  body > .tools #btn-heat::after{content:'Плотность жути'}
   body > .tools #btn-random::after{content:'Испытай удачу'}
   body > .tools .search{top:58px;left:0;width:100%;max-height:60dvh;overflow:auto}
   .logo{top:158px}
@@ -545,4 +545,10 @@ body.panel-open .mapctl{right:calc(var(--panel-width) + 48px)}
  body > .tools{top:auto;bottom:calc(12px + env(safe-area-inset-bottom,0px))}
  body > .tools .search{top:auto;bottom:58px}
  body .hud,body.panel-open .hud{bottom:76px}
+}
+
+@media (max-width:720px){
+ body > .tools{grid-template-columns:repeat(3,minmax(0,1fr))}
+ body > .tools #btn-search{display:none}
+ body .hud,body.panel-open .hud{bottom:72px}
 }
