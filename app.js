@@ -796,4 +796,13 @@
   else if (location.hash === "#nointro") say(esc(S.ghost.hint), { secs: 7 });
   else openModal("intro");
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitLabels);
+  // Keep mobile actions outside the bottom sheet's stacking context.
+  var mobileActions = window.matchMedia('(max-width:720px)');
+  var actions = $('tools'), actionsParent = actions.parentNode, actionsNext = actions.nextSibling;
+  function placeMobileActions() {
+    if (mobileActions.matches) document.body.appendChild(actions);
+    else actionsParent.insertBefore(actions, actionsNext);
+  }
+  placeMobileActions();
+  if (mobileActions.addEventListener) mobileActions.addEventListener('change', placeMobileActions);
 })();
