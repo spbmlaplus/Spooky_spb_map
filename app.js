@@ -794,6 +794,6 @@
   var deep = /#d=(\d+)/.exec(location.hash);
   if (deep && byId[deep[1]]) { openDistrict(byId[deep[1]], { noHash: true }); setTimeout(function () { say(esc(S.ghost.hint), { secs: 6 }); }, 900); }
   else if (location.hash === "#nointro") say(esc(S.ghost.hint), { secs: 7 });
-  else { var seenIntro = false; try { seenIntro = localStorage.getItem("spb-dark-intro-v2") === "1"; } catch(e) {} if (!seenIntro) openModal("intro"); else say(esc(S.ghost.hint), { secs: 7 }); }
+  else openModal("intro");
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitLabels);
 })();
