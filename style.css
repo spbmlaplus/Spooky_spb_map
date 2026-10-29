@@ -529,3 +529,8 @@ body.panel-open .mapctl{right:calc(var(--panel-width) + 48px)}
   body > .tools .search{top:58px;left:0;width:100%;max-height:60dvh;overflow:auto}
   .logo{top:158px}
 }
+
+@media (max-width:720px){
+  body.panel-open > .tools,
+  body:has(#intro:not([hidden])) > .tools{display:none}
+}
