@@ -206,7 +206,7 @@ window.SETTINGS.heatmap = {
 window.SETTINGS.crowd = {
   enabled: true,
   // Публичная ссылка Яндекс Формы или Google Формы (не ссылка редактора).
-  public_form_url: "",
+  public_form_url: "https://docs.google.com/forms/d/e/1FAIpQLSeYU5zrTAdMcKLf78S-ZDdfvIjmfrm7arVvLoWTnmMMJUnTPw/viewform",
   form_url: "",
   fields: { district_id: "entry.0000000001", district: "entry.0000000002", story: "entry.0000000003", author: "entry.0000000004" },
   stories_csv: "",

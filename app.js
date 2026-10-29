@@ -317,26 +317,8 @@
       return "<li><p>" + esc(x.story) + "</p>" + (x.author ? "<small>— " + esc(x.author) + "</small>" : "") + "</li>";
     }).join("") : '<li class="none">' + esc(C.empty) + "</li>";
     $("crowd-open").textContent = C.cta; $("crowd-open").hidden = false;
-    $("crowd-form").hidden = true; $("crowd-msg").hidden = true;
+    $("crowd-open").href = C.public_form_url; $("crowd-msg").hidden = true;
   }
-  // Истории отправляются через публичную Яндекс или Google Форму.
-  $("crowd-open").addEventListener("click", function () {
-    this.hidden = true; $("crowd-form").hidden = false; $("crowd-msg").hidden = true;
-    var url = C.public_form_url || "", valid = false;
-    try { var u = new URL(url); valid = u.protocol === "https:" && (/^(forms\.yandex\.(ru|com)|forms\.ya\.ru|forms\.gle)$/.test(u.hostname) || (u.hostname === "docs.google.com" && u.pathname.indexOf("/forms/") === 0)); } catch(e) {}
-    $("crowd-district-name").textContent = crowdFor ? [crowdFor.name_2, crowdFor.name].filter(Boolean).join(" / ") : "";
-    $("crowd-form-link").hidden = !valid;
-    $("crowd-copy-district").hidden = !valid;
-    $("crowd-form-note").textContent = valid ? "Откроется форма для истории. Скопируй название района и укажи его в ответе." : "Форма для историй этого района ещё не подключена. Приём историй скоро откроется.";
-    if(valid) $("crowd-form-link").href = url;
-  });
-  $("crowd-cancel").addEventListener("click", function () { $("crowd-form").hidden = true; $("crowd-open").hidden = false; });
-  $("crowd-copy-district").addEventListener("click", function () {
-    var text = $("crowd-district-name").textContent;
-    if(navigator.clipboard) navigator.clipboard.writeText(text).then(function(){ $("crowd-form-note").textContent="Название района скопировано. Вставь его в форме вместе с историей."; }).catch(function(){ $("crowd-form-note").textContent="Скопируй название района из строки ниже."; });
-    else $("crowd-form-note").textContent="Скопируй название района из строки ниже.";
-  });
-
   // ------------------------------------------------------------------ фото-точки
   var pins = {}, pinGroup = L.layerGroup().addTo(map), pinsOn = true;
   var pinSize = function () { return parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--pin-size")) || 50; };

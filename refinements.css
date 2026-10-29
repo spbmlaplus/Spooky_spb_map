@@ -62,3 +62,6 @@
 
 
 .crowd-form .cta{text-decoration:none;display:inline-block;align-self:flex-start}.crowd-district{font-size:13px;line-height:1.5}.crowd-form small{color:var(--muted);line-height:1.5}
+
+/* Existing district story button is a link; preserve its appearance. */
+.crowd-cta{display:block;text-decoration:none;line-height:normal}
