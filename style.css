@@ -540,3 +540,9 @@ body.panel-open .mapctl{right:calc(var(--panel-width) + 48px)}
  body .panel:not(.open){transform:translateY(calc(100% + 180px));visibility:hidden;pointer-events:none}
  body .panel.open{visibility:visible;pointer-events:auto}
 }
+
+@media (max-width:720px){
+ body > .tools{top:auto;bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+ body > .tools .search{top:auto;bottom:58px}
+ body .hud,body.panel-open .hud{bottom:76px}
+}
