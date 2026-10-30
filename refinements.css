@@ -80,3 +80,8 @@ button.crowd-cta{display:block;width:100%;text-decoration:none;line-height:norma
  .hb-seg small{font-size:9.5px}
  .back-btn{width:38px;height:38px;padding:0;justify-content:center;flex-shrink:0}
 }
+
+/* Intro: how-to after the greeting */
+.howto-title{font-family:var(--font-title);font-weight:400;font-size:20px;margin:22px 0 12px;color:var(--ink)}
+.howto{grid-template-columns:1fr 1fr;margin:0 0 18px}
+@media(max-width:720px){.howto{grid-template-columns:1fr}}
