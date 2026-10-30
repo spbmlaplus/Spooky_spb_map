@@ -85,3 +85,16 @@ button.crowd-cta{display:block;width:100%;text-decoration:none;line-height:norma
 .howto-title{font-family:var(--font-title);font-weight:400;font-size:20px;margin:22px 0 12px;color:var(--ink)}
 .howto{grid-template-columns:1fr 1fr;margin:0 0 18px}
 @media(max-width:720px){.howto{grid-template-columns:1fr}}
+
+/* Fixes after audit */
+.intro-ghost{position:static}
+.intro .cta{position:sticky;bottom:0;margin-top:12px}
+.intro::after{content:"";display:block;height:1px}
+.intro .cta{box-shadow:0 -18px 22px 6px #000}
+@media(min-width:1001px){
+ .chips{flex-wrap:wrap!important;overflow:visible!important;justify-content:center!important;row-gap:2px}
+ body.panel-open .chips{flex-wrap:wrap!important;-webkit-mask-image:none}
+}
+.intro .cta{box-shadow:0 0 0 14px #000,0 -26px 22px 14px #000!important}
+.intro .cta{width:100%;display:block}
+.intro .cta{box-shadow:0 0 0 14px #000,0 -26px 22px 14px #000,0 40px 0 14px #000!important}
